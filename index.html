@@ -137,7 +137,7 @@ $(document).ready(function(){
 	$("#verify_no").hide();
 			
 	$("#verify").click(function(){
-		var certid = $("#certid").val();
+		var certid = $("#certid").val().toUpperCase();
 		var url = "cert/" + certid + "-1.jpg";
 		if (fileExists(url))
 		{
