@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link href="https://cdn.bootcss.com/bulma/0.7.1/css/bulma.min.css" rel="stylesheet">
+	<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	<title>梵石雅道苏作玉雕工作室</title>
+	<style>
+		body{background-color:#efefef}
+		.certid{width:100%}
+		.top{background-image: url(images/bg.png); line-height:58px; height:58px}
+		.footer{background-color:#eaeaea}
+	</style>
+</head>
+<body>
+
+<section class="hero top"></section>
+
+<section class="hero">
+	<div class="hero-body">
+		<div class="container">
+			<div class="columns">
+				<div class="column has-text-centered">
+					<img src="images/logo.gif" />
+				</div>
+				<div class="column is-10">
+					<h1 class="title is-1 has-text-centered has-text-left-desktop is-size-4-mobile">
+						梵石雅道苏作玉雕工作室
+					</h1>
+					<h2 class="subtitle is-3 has-text-centered has-text-left-desktop is-size-5-mobile">
+						我们只做好玩的玉
+					</h2>
+					<!--<p class="subtitle is-6">
+						梵石雅道苏作玉雕工作室是集采鉴、设计和雕琢为一体的玉器文化机构。自成立之日起，秉承对每一个客户负责的态度，继承苏作玉雕的优良传统，恪守非好料不做的宗旨，为玉器商家创作了一大批精细雅巧的作品。
+					</p>
+					<p class="subtitle is-6">
+						工作室擅长人物、观音、佛、杂件，而以山水巧色最为擅长，作品圆润饱满，匠心独韵。工作室在多年的雕琢中对于苏作玉雕风格的艺术表现形式有了自身的认识，设计风格古今交织，古而不泥古，今亦不近今，追求儒雅大方，造型自然。背靠深厚的中华玉文化，题材推陈出新。雕琢工艺但求到位，刀痕巧拙相济，怀着一玉一命之理念，善待每块美玉。
+					</p>
+					<p class="subtitle is-6">
+						多年以来，作品流传甚广，颇受行内人士好评。然艺无止境，工作室仍将依憑美玉，光大玉人精神。愿友天下爱玉之士，携手共进。
+					</p>-->
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="section">
+    <div class="container">
+		<div class="field has-addons">
+			<div class="control certid">
+				<input id="certid" class="input" type="text" placeholder="请输入证书ID">
+			</div>
+			<div class="control">
+				<a id="verify" class="button is-primary">验证</a>
+			</div>
+		</div>
+		
+		<article id="verify_ok" class="message is-primary">
+			<div class="message-header">
+				<p>验证成功</p>
+				<button class="delete" aria-label="delete"></button>
+			</div>
+			<div id="cert_pic" class="message-body has-text-centered"></div>
+		</article>
+		
+		<article id="verify_no" class="message is-primary">
+			<div class="message-header">
+				<p>验证失败</p>
+				<button class="delete" aria-label="delete"></button>
+			</div>
+			<div class="message-body has-text-centered"><img src="images/nofile.gif" /></div>
+		</article>
+		
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+		<div class="columns is-mobile">
+			<div class="column"><img src="images/1-show.jpg" /></div>
+			<div class="column"><img src="images/2-show.jpg" /></div>
+			<div class="column"><img src="images/3-show.jpg" /></div>
+		</div>
+		<div class="columns is-mobile">
+			<div class="column"><img src="images/5-show.jpg" /></div>
+			<div class="column"><img src="images/7-show.jpg" /></div>
+			<div class="column"><img src="images/8-show.jpg" /></div>
+		</div>
+		<div class="columns is-mobile">
+			<div class="column"><img src="images/9-show.jpg" /></div>
+			<div class="column"><img src="images/17-show.jpg" /></div>
+			<div class="column"><img src="images/11-show.jpg" /></div>
+		</div>
+		<div class="columns is-mobile">
+			<div class="column"><img src="images/12-show.jpg" /></div>
+			<div class="column"><img src="images/13-show.jpg" /></div>
+			<div class="column"><img src="images/14-show.jpg" /></div>
+		</div>
+	</div>
+</section>
+
+<footer class="footer has-text-dark">
+	<div class="container">
+		<div class="content has-text-centered">
+			<p>&copy;2018 <strong>梵石雅道</strong> / 微信：79094090</p>
+		</div>
+	</div>
+</footer>
+
+<script>
+function fileExists(url)
+{
+	var isExists;
+	$.ajax({
+		url:url,
+		async:false,
+		type:'HEAD',
+		error:function(){
+			isExists=0;
+		},
+		success:function(){
+			isExists=1;
+		}
+	});
+	if(isExists==1)
+		return true;
+	else
+		return false;
+}
+
+$(document).ready(function(){
+	$("#verify_ok").hide();
+	$("#verify_no").hide();
+			
+	$("#verify").click(function(){
+		var certid = $("#certid").val();
+		var url = "cert/" + certid + "-1.jpg";
+		if (fileExists(url))
+		{
+			$("#cert_pic").html('<img src="' + url + '" />');
+			$("#verify_ok").show();
+			$("#verify_no").hide();
+		}
+		else
+		{
+			$("#verify_ok").hide();
+			$("#verify_no").show();
+		}
+	})
+	
+	$(".delete").click(function() {
+		$(".message").hide();
+	})
+})
+</script>
+</body>
+</html>
